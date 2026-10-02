@@ -1,0 +1,31 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install textual requests urllib3 pyinstaller
+
+      - name: Build
+        run: pyinstaller --clean --noconfirm skygrab.spec
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: skygrab-windows
+          path: dist/skygrab/
+          if-no-files-found: error

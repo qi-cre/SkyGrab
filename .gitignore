@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+downloads/
+*.part
+*.state.json
+*.bak
+
+# 构建产物
+dist-appimage/
+*.AppImage
+
+# 本地 venv
+.skygrab-venv/
+.build-venv/
+
+# PyInstaller 中间文件
+*.toc
+warn-*.txt
+xref-*.html
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
